@@ -1,0 +1,46 @@
+body {
+    background-color: lightsteelblue;
+}
+#centerdiv {
+    background-color: aliceblue;
+    width: 80%;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 10px 10px 5px;
+}
+#tekstdiv {
+    width: calc(100% - 50px);
+    margin: auto;
+}
+#buttonrow {
+    
+}
+#buttonrow button{
+    background-color:aliceblue;
+    height: 50px;
+    border-radius: 5px;
+    border: solid 1px;
+}
+.normaltekst {
+    font-size: 20px;
+}
+.projektknap {
+    width: 50%;
+    height:auto;
+    border-radius: 7px;
+    background-color: lightsteelblue;
+    border-style: none;
+    padding: 5px;
+    box-shadow: 5px 5px 5px;
+    transition: 0.3s;
+}
+.projektknap:hover {
+    background-color: steelblue;
+    box-shadow: 8px 8px 5px;
+    transform: translate(-3px,-3px);
+}
+.projektknap:active {
+    background-color: lightsteelblue;
+    box-shadow: 1px 1px 5px;
+    transform: translate(7px,7px);
+}
