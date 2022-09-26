@@ -7,6 +7,7 @@ body {
     margin: auto;
     border-radius: 20px;
     box-shadow: 10px 10px 5px;
+    min-height: 100%;
 }
 #tekstdiv {
     width: calc(100% - 50px);
@@ -22,10 +23,10 @@ body {
     border: solid 1px;
 }
 .normaltekst {
-    font-size: 20px;
+    font-size: 30px;
 }
 .projektknap {
-    width: 50%;
+    width: 45%;
     height:auto;
     border-radius: 7px;
     background-color: lightsteelblue;
@@ -33,6 +34,12 @@ body {
     padding: 5px;
     box-shadow: 5px 5px 5px;
     transition: 0.3s;
+}
+h1 {
+    font-size: 40px;
+}
+h2 {
+    font-size: 30px;
 }
 .projektknap:hover {
     background-color: steelblue;
