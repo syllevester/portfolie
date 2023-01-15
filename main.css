@@ -32,6 +32,7 @@ body {
     background-color: lightsteelblue;
     border-style: none;
     padding: 5px;
+    margin-top: 5px;
     box-shadow: 5px 5px 5px;
     transition: 0.3s;
 }
