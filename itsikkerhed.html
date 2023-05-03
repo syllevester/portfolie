@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IT Sikkerhed</title>
+        <style>
+            #cookiepopup {
+                background-color: white;
+                position: absolute;
+                height: min-content;
+                width: 80%;
+                left: 10%;
+                bottom: -800px;
+                border-top-left-radius: 20px;
+                border-top-right-radius: 20px;
+                padding: 8px;
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0px;
+                border: solid orange;
+                border-bottom: none;
+            }
+            .cookieknap {
+                border: none;
+                padding: 4px;
+                color: white;
+            }
+            #accepterknap {
+                background-color: green;
+            }
+            #accepterknap:hover {
+                transition: 0.15s;
+                background-color: darkgreen;
+            }
+            #accepterknap:active {
+                background-color: green;
+            }
+            #afvisknap {
+                background-color: red;
+            }
+            #afvisknap:hover {
+                cursor: not-allowed;
+            }
+            #noscrolldiv {
+                position: absolute;
+                height: 90%;
+                width: 95%;
+                bottom: 0px;
+                overflow: hidden;
+                margin: 0px;
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="centerdiv">
+            <h1>IT Sikkerhed</h1>
+            Vidste du godt at din data ikke er sikker?
+            Det ved du nu.<br>
+            I IT-sikkerhedsforløbet i informatik, har vi lært forskellige ting <br>
+            der skal hjælpe os, med at gøre vores færd på internettet sikkert. <br>
+            Blandt andet skal man ikke bruge samme passwords til alle steder. <br>
+            Man skal måske heller ikke bruge passwordet <b>password123</b>.<br>
+            <b><a href="https://asecuritysite.com/encryption/passes" target="_blank" class="links">Her kan du se hvor lang tid dit password tager at cracke</a></b><br>
+            Husk desuden at tænke før du siger ja til cookies.
+        </div>
+        <div id="noscrolldiv"><div id="cookiepopup">
+            <h2 style="margin-top: 0px;">Denne hjemmeside anvender cookies</h2>
+            Hjemmesiden benytter både egne- og tredjepartscookies for at tilpasse indholdet mest muligt. 
+            Vores cookies bliver brugt til statistik og markedsføring, og desuden sælger vi dataen til alle 
+            der vil købe. Hvis dette ikke er i orden kan du klikke afvis. <br>
+            <button class="cookieknap" id="accepterknap" onclick="fjernpopup()">Accepter cookies</button> <button class="cookieknap" id="afvisknap">Afvis cookies</button>
+        </div></div>
+        
+        <script>
+            var y=-800;
+            function fjernpopup() {
+                document.getElementById("noscrolldiv").innerHTML="";
+            }
+            var interval=setInterval(()=>{
+                y+=5;
+                document.getElementById("cookiepopup").style.bottom=y+"px";
+                if(y>=0) {
+                    y=0;
+                    clearInterval(interval);
+                }
+            },16)
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+body {
+    background-color: black;
+}
+h1 {
+    margin-bottom: 6px;
+}
+h2 {
+    margin-bottom: 4px;
+}
+.topmenu {
+    border-bottom: solid white;
+    width: auto;
+    padding-bottom: 2px;
+    border-bottom-width: 2px;
+}
+.links {
+    color: white;
+    text-decoration: none;
+}
+.links:hover {
+    color: #AAAAAA;
+}
+.toplink {
+    color: white;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-family: "Courier New";
+    font-weight: bold;
+    margin-right: 15px;
+}
+.toplink:hover {
+    transition: 0.5s;
+    border: solid white;
+}
+.centerdiv {
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    font-family: "Courier New";
+    color: white;
+}
+#navnid {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    border: none;
+}
+#navnid:hover {
+    border: none;
+}

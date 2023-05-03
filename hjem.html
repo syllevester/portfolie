@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .ordetsort {
+                color: black;
+                text-shadow: -1px 0px white, 0px -1px white, 1px 0px white, 0px 1px white;
+            }
+        </style>
+        <title>Portfolio</title>
+    </head>
+    <body>
+        <div class="centerdiv">
+            <h1>Portfolio</h1>
+            Jeg hedder Sylvester og jeg går på Rysensteen.<br>
+            På denne hjemmeside kan du se alle de seje ting jeg har lavet.
+            Blandt andet har jeg lavet denne portfolie.<br><br>
+            I informatik har jeg lavet sygt mange spændende ting. Dem kan du alle se i menuen øverst.
+            <h2>Farvevalg</h2>
+            Jeg har valgt et minimalistisk layout, fordi det er overskueligt og nemt at finde rundt i.<br>
+            Jeg har bare valgt farverne <b>hvid</b> og <b class="ordetsort">sort</b>, fordi de går godt sammen, og er ikke alt for anstrengende at se på.
+            <h2 style="margin-bottom: 8px;">Kodeforklaring</h2>
+            <h4 style="margin-bottom: 0px;margin-top: 0px;">Hjem</h4>
+            En vigtig del af hjemmesiden er jQuery. Det er det jeg bruger til at skifte mellem de forskellige tabs. <br>
+            Selve <b>index.html</b> er bare top-menuen og så en <b>div</b>, som de forskellige sider kan loades ind på. Jeg loader jQuery ind som et library 
+            og så bruger jeg denne kode til at loade siderne med: 
+            <pre class="line-numbers"><code class="language-js">function loadunderside(url) {
+    history.pushState("null","","#"+url.split('.')[0]);
+    $("#underside").fadeOut(fadehastighed, ()=>{$("#underside").load(url).fadeIn(fadehastighed);})
+}</code></pre>
+            $("#underside") vælger det element med id'et <b>"underside"</b> og fadeOut, fader det der er ud. 
+            Efter det, udfører den den funktion som står som 2. input, som loader en html side ind i div'en, 
+            og fader den ind. <br>
+            history.pushState ændrer url'en uden at reloade siden, og url.split('.')[0], fjerner <b>.html</b> fra f.eks. <b>hjem.html</b>, 
+            som er derfor at url'en slutter på <b>/#hjem</b><br><br>
+            Desuden bruger jeg library'et <b>prism.js</b> til at displaye koden.
+            <h4 style="margin-bottom: 0px;">Spil, leg og samarbejde</h4>
+            Spillet vi lavede er kodet i p5.js. Alle kasserne der faldt ned var gemt i en liste der hed <b>kasser</b>.
+            Listen bestod af JavaScript objects, med værdierne x, y, højde og om man havde klikket på den endnu.
+            <pre class="line-numbers"><code class="language-js">kasser.push({
+    x: floor(random(4)), 
+    y: 0, 
+    height: random(70, 150), 
+    clicked: false
+});</code></pre>
+            Et JavaScript object laver man med {}, og inden i skriver man alle værdierne sepereret med komma. <br>
+            I hvert draw loop, blev der så lagt 6 til y, hvilket gjorde den faldt ned. <br>
+            Her kan man så se hvordan kasserne blev tegnet:
+            <pre class="line-numbers"><code class="language-js">for(var i=0;i&#60;kasser.length;i++) {
+    if(kasser[i].clicked) {
+        fill(70, 70, 120)
+    }else{
+        fill(0, 0, 50)
+    }
+    rect(kasser[i].x*width/4, kasser[i].y, width/4, kasser[i].height);
+}</code></pre>
+            For-lykken løber fra 0 til længden af listen minus 1. Derfor går den gennem alle elementer i listen. 
+            Der er så forskellige farver for om man har klikket på den eller ej. 
+            Kassens bredde er så en fjerdedel af den samlede bredde. Her kan man også se hvordan undervariablerne i 
+            objectet bliver brugt (f.eks .x eller .clicked).
+            <h4 style="margin-bottom: 0px;">IT Sikkerhed</h4>
+            Under siden <b>IT Sikkerhed</b> er der en cookiepopup. Den er lavet med en div, som jeg så bevæger med 
+            JavaScript så den flyver ind fra bunden. Her er koden jeg brugte: 
+            <pre class="line-numbers"><code class="language-js">var interval=setInterval(()=>{
+    y+=5;
+    document.getElementById("cookiepopup").style.bottom=y+"px";
+    if(y>=0) {
+        y=0;
+        clearInterval(interval);
+    }
+},16)</code></pre>
+            setInterval gør at den flytter div'en hvert 16. ms (altså ca. 60 gange i sekundet). Den starter 800px under 
+            siden, og den bevæger sig op med 5px hvert frame. Jeg kan så opdatere css værdien for positionen via js. 
+            Når den når op til bunden af siden kan jeg stoppe løkken med clearInterval, med intervallet som input. 
+            Når popup'en er under siden, bliver siden srollbar, så jeg har sat popup'en ind i en div der ikke kan scrolle. <br>
+            Det kan man gøre med <code class="inline-color language-css">overflow: none;</code> i css koden.
+        </div>
+        <script src="prism/prism.js"></script>
+    </body>
+</html>

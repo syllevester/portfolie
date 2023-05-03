@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <script
+        src="https://code.jquery.com/jquery-3.6.4.js"
+        integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E="
+        crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="prism/prism.css">
+    </head>
+    <body>
+        <div class="topmenu">
+            <a class="toplink" href="javascript:loadunderside('hjem.html')">Hjem</a>
+            <a class="toplink" href="javascript:loadunderside('astropi.html')">AstroPi</a>
+            <a class="toplink" href="javascript:loadunderside('itsikkerhed.html')">IT Sikkerhed</a>
+            <a class="toplink" href="javascript:loadunderside('piano.html')">Spil, leg og samarbjede</a>
+            <div class="toplink" id="navnid">Sylvester 2.y</div>
+        </div>
+        <div id="underside"></div>
+        <script>
+            if(window.location.hash) {
+                $("#underside").load(window.location.hash.split("#")[1]+".html")
+            }else{
+                $("#underside").load("hjem.html")
+                history.pushState("null","","#hjem");
+            }
+            var fadehastighed=300;
+            function loadunderside(url) {
+                history.pushState("null","","#"+url.split('.')[0]);
+                $("#underside").fadeOut(fadehastighed, ()=>{$("#underside").load(url).fadeIn(fadehastighed);})
+            }
+        </script>
+    </body>
+</html>

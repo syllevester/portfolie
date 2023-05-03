@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .downloadlinks {
+                color: white;
+                text-decoration: none;
+            }
+            .downloadlinks:hover {
+                transition: 0.2s;
+                color: #BBBBBB;
+            }
+        </style>
+        <title>Astro PI</title>
+    </head>
+    <body>
+        <div class="centerdiv">
+            <h1>Astro Pi</h1>
+            At fortage eksperimenter i rummet er for mange videnskabsinteresserede mennesker en kæmpe drøm. Denne drøm har organisationen ISA gjort mulig, ved at placere 2 RaspberryPi microcomputere på ISS. 
+            Disse computere er udstyret med diverse censorer, som kan controlleres gennem programmeringssproget Python og kan dermed bruges til at fortage forsøg. Dog er det, desværre, ikke alle der kan få 
+            deres forsøg op på ISS. Først skal man igennem en konkurrence kaldet Mission Space Lab. Denne konkurrence valgte vi, en gruppe på 5 gymnasieelever,  at tage op, og du kan følge vores proces herunder.
+            <h2>Kravene til Mission Space Lab</h2>
+            Ligesom, med næsten alle andre konkurrencer, er der nogen krav som man skal overholde for at deltage i Mission Space Lab.<br> Disse krav tog vi selvfølgelig højde for, og du kan se dem her.
+            <img src="astropi/AstroPiBilleder/Astro-PiKrav.png" style="width: 100%;height:auto;margin-top:10px;border-radius:10px;">
+            <h2>Vores forsøg</h2>
+            I første face af Mission Space Lab skal man komme op med en ide til et interessant eksperiment man regner med at kunne udføre med Astro-Pi. Vi kom op med følgende ide, som fik os videre til face 2. <br><br>
+            <i>"The purpose of our experiment is to measure Earth’s magnetic field and determine if there is a difference between night and day. Our hypothesis is that when Earth is facing the sun, its magnetic field will be greatly altered by the solar winds. We will provide further evidence to our claim by also measuring ionizing radiation produced by the sun, since this has an influence on the magnetic field. Therefore, if there is a large amount of ionizing radiation, the magnetic field will also be under influence from the solar winds.
+            <br>This information is extremely important since most people are unaware of the dangers in space and how much Earth really protects us from the sun, deadly gamma ray bursts and many others. By using the AstroPi we can therefore find out how these phenomena behave in space and compare them to the safe climate of earth."</i>
+            <h2>Hvilke sensore vi valgte at bruge</h2>
+            For at udføre ens forsøg skal man selvfølgelig komme med en beskrivelse af de sensorer man planlægger at bruge til at udføre det. Vi valgte at bruge <strong>magnetometeret</strong>  samt <br> <strong>HQ-cameraet</strong> som du kan læse i vores beskrivelse her.<br><br>
+            <i>“We plan to gather data from the magnetometer IMU sensor to measure the Earth’s magnetic field and determine possible fluctuations, that are caused by the sun among others. Additionally, we think it could be interesting to put the cap on the camera to measure radioactive decay in space. By putting the cap on the camera, it will of course not be able to take pictures and video. However, it is our hypothesis that radioactive decay will happen as an effect of the Sun’s ionizing radiation, which will create radioactive decay. This decay will result in radiation which will hit the camera’s sensor cells and be detected as light. It would therefore be interesting to see if the camera can detect a difference in ionizing radiation when facing the Sun and not facing the Sun.”</i>
+            <h2>Test af sensorer</h2>
+            En vigtig del af forberedelsen til at sende sit eksperiment op til ISS går på at teste om koden og sensorerne overhoved virker. For os var det især vigtigt at teste om vi med HQ-camararet kunne måle radioaktivt henfald, da vi var meget usikre på om det var muligt. Måden vi testede dette på var ved at sætte en radioaktiv kilde foran kameraet, og kører koden som funger på følgende måde.
+            <br><br>Først sættes kameraer-cappen på sådan at der ikke trænger noget lys igennem til linsen. En kilde med gammastråling (som kan trænge igennem linsen) sættes derefter op foran kameraet. Koden startes som plotter lysintensiteten for de forskellige pixels. Til sidst kan vi ud fra plottet aflæse mængden af radioaktiv stråling som har ramt sensoren.
+            <h2>Vurdering af vores kode</h2>
+            Vores vurdering af projektkravene er, at vi bortset fra nogle mindre praktiske detaljer, som let rettes, opfylder kravene fint. Vi bruger alle tilladte libraries bortset fra "math" library, og desuden hedder vores kode ikke "main.py". Disse ting kan dog nem rettes og vil ikke have nogen indflydelse på selve eksperimentet. Det største vi mangler er at kode en timer ind i programmet, så det kun kører i det 3 afsatte timer man har at gøre godt med i rummet.
+            <h2>Flowchart</h2>
+            <img src="astropi/AstroPiBilleder/flowchart.png" style="width: 100%;height: auto;border-radius: 10px;">
+            <h2>Links til kode + kodeforklaring</h2>
+            <b>
+                <a class="downloadlinks" href="astropi/MagnetfeltFunctionBeskrivelse.py" download>Magnetfelt Funktion</a><br>
+                <a class="downloadlinks" href="astropi/CameraFunctionBeskrivelse.py" download>Kamara Funktion</a>
+            </b>
+        </div>
+    </body>
+</html>
