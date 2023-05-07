@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <style>
+    .container{
+        margin: 0;
+        padding: 0;
+        font-family: "Georgia", sans-serif;
+        font-size: 20px;
+        color: black;
+        width: 70vw;
+        height: 50vw;
+        background-position: center;
+        background-size:  cover;
+        padding-left: 5%;
+        padding-right: 5%;
+        box-sizing: border-box;
+        position: relative;
+        text-align: center;
+        background-color:white;
+    }
+
+    #myImage{
+        border-radius: 15px;
+        border: 4px solid black;
+        box-shadow: 3px 5px #cfcfcf;
+        height: 40%;
+    }
+    .button{
+      background-color: white;
+      color: black;
+      width: 24.5%;
+      height: 60px;
+      border-radius: 15px;
+      margin: 5px;
+      transition: transform 0.4s;
+      cursor: pointer;
+      
+    }
+    .button:hover{
+      background-color: #F7932E;
+      color: white;
+      transform: translate(0px, -2px);
+      box-shadow: 3px 5px #cfcfcf;
+    }
+    .button:active{
+      font-size: 19px;
+    }
+    #Svar1 {
+      background-color: var(--svar1color)
+    }
+    #Svar1:hover {
+      background-color: var(--svar1hover)
+    }
+    #Svar2 {
+      background-color: var(--svar2color)
+    }
+    #Svar2:hover {
+      background-color: var(--svar2hover)
+    }
+    #Svar3 {
+      background-color: var(--svar3color)
+    }
+    #Svar3:hover {
+      background-color: var(--svar3hover)
+    }
+    #Svar4 {
+      background-color: var(--svar4color)
+    }
+    #Svar4:hover {
+      background-color: var(--svar4hover)
+    }
+    .Overskrift{
+      font-family: "Copperplate";
+      font-size: 550%;
+      text-shadow: 3px 4px #cfcfcf;
+    }
+    #tilbage{
+      transition: transform 0.5s;
+      position: absolute;
+      left: 21%;
+      top: 25%;
+      cursor:pointer;
+    }
+    #tilbage:hover{
+      transform: translate(-5px, 0px);
+    }
+    #tilbage:active{
+      height: 93px;
+      width: 93px;
+    }
+    #næste{
+      transition: transform 0.5s;
+      position: absolute;
+      right: 21%;
+      top: 25%;
+      cursor: pointer;
+    }
+    #næste:hover{
+      transform: translate(5px, 0px);
+    }
+    #næste:active{
+      height: 93px;
+      width: 93px;
+    }
+  </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="Overskrift">Epic logo quiz</h1>
+      <a onclick="klikLyd.play();tilbage()"><img src="databaser/Pil-left.png" id="tilbage"></a> <img id="myImage" src="https://fc05.deviantart.net/fs19/f/2007/241/4/a/WP_Logos_of_Australia_by_Borrarcher.png"> <a onclick="klikLyd.play();ny()"><img src="databaser/Pil-right.png" id="næste"></a>
+      <br>
+      <button class="button" id="Svar1" type="button" onclick="checksvar(1)">Tryk Næste For Start</button>
+      <button class="button" id="Svar2" type="button" onclick="checksvar(2)">Tryk Næste For Start</button>
+      <br>
+      <button class="button" id="Svar3" type="button" onclick="checksvar(3)">Tryk Næste For Start</button>
+      <button class="button" id="Svar4" type="button" onclick="checksvar(4)">Tryk Næste For Start</button>
+      <br>
+    </div>
+  </body>
+</html>
+
+<script>
+  var klikLyd = new Audio();
+  klikLyd.src ="https://github.com/XxAxeleratorxX/Databaser/blob/main/click.mp3?raw=true"
+  var rigtigLyd = new Audio();
+  rigtigLyd.src ="https://github.com/XxAxeleratorxX/Databaser/blob/main/correct.mp3?raw=true"
+  var forkertLyd = new Audio();
+  forkertLyd.src ="https://github.com/XxAxeleratorxX/Databaser/blob/main/wrong.mp3?raw=true"
+
+    let x=0;
+    let data;
+  var svar1=""
+  var svar2=""
+  var svar3=""
+  var svar4=""
+  var rigtigsvar=0;
+  var svaret=false;
+  resetfarver()
+
+  function ny() {
+    svaret=false;
+    var pic;
+    x++;
+    if(x>16){
+      x=1
+    }if(x<1){
+      x=16
+    }
+    genererTekst(x);
+    resetfarver();
+    pic = "https://github.com/XxAxeleratorxX/Databaser/blob/main/"+x+".png?raw=true"
+    document.getElementById('Svar1').innerHTML = svar1;
+    document.getElementById('Svar2').innerHTML = svar2;
+    document.getElementById('Svar3').innerHTML = svar3;
+    document.getElementById('Svar4').innerHTML = svar4;
+    document.getElementById('myImage').src = pic;
+    
+  }
+
+  function resetfarver() {
+    document.getElementById("Svar1").style.setProperty("--svar1color","white")
+    document.getElementById("Svar2").style.setProperty("--svar2color","white")
+    document.getElementById("Svar3").style.setProperty("--svar3color","white")
+    document.getElementById("Svar4").style.setProperty("--svar4color","white")
+    document.getElementById("Svar1").style.setProperty("--svar1hover","#F7932E")
+    document.getElementById("Svar2").style.setProperty("--svar2hover","#F7932E")
+    document.getElementById("Svar3").style.setProperty("--svar3hover","#F7932E")
+    document.getElementById("Svar4").style.setProperty("--svar4hover","#F7932E")
+  }
+  function tilbage(){
+    x-=2;
+    ny();
+  }
+  function genererTekst(x){
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]["LogoID"] == x) {
+          rigtigsvar=data[i]['rigtigtSvar']
+          svar1 = data[i]['1']; 
+          svar2 = data[i]['2'];
+          svar3 = data[i]['3'];
+          svar4 = data[i]['4'];
+          break; // exit efter loop
+        }
+      }
+  }
+  function checksvar(svar) {
+    if(svaret==false) {
+      svaret=true;
+      if(svar==rigtigsvar) {
+        rigtigLyd.play();
+        document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"color","#32e022")
+        document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"hover","#32e022")
+      }else{
+        forkertLyd.play();
+        document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"color","#ed2f2f")
+        document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"hover","#ed2f2f")
+        document.getElementById('Svar'+rigtigsvar).style.setProperty("--svar"+rigtigsvar+"color","#32e022")
+        document.getElementById('Svar'+rigtigsvar).style.setProperty("--svar"+rigtigsvar+"hover","#32e022")
+      }
+    }
+  }
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "databaser/logo.csv", true);
+  xhr.responseType = "text";
+  xhr.onload = function() {
+    data = Papa.parse(xhr.responseText, {
+      header: true // set this to true if the first row contains the header names
+    }).data;
+  };
+  xhr.send();
+</script>
