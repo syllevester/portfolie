@@ -74,6 +74,64 @@
             Når den når op til bunden af siden kan jeg stoppe løkken med clearInterval, med intervallet som input. 
             Når popup'en er under siden, bliver siden srollbar, så jeg har sat popup'en ind i en div der ikke kan scrolle. <br>
             Det kan man gøre med <code class="inline-color language-css">overflow: none;</code> i css koden.
+            <h4 style="margin-bottom: 0px;">Databaser</h4>
+            I forløbet om databaser lavede vi i vores gruppe, et quizspil om logoer. 
+            Det virker ved at vi har en database (gemt som csv fil), med en primærnøgle og en sekundær nøgle til hver af de 4 svarmugligheder, 
+            plus en sekundernøgle som er et integer, som siger hvilket nummer svar er det rigtige. Et udsnit af databasen kan ses her:
+            <pre class="line-numbers"><code class="language-markup">LogoID,1,2,3,4,rigtigtSvar,
+1,Pepsi,Coca Cola,Sprite,Faxe Kondi,1,
+2,Irma,Lidl,Aldi,Rema,4,</code></pre>
+            Svar mulighederne er selvfølgelig skiftet ud med nogle hypotetiske, så du ikke kan bruge dem til at snyde i quizen. Her kan man se 
+            hvordan en csv fil bruger kommaer til at adskille værdierne.<br>
+            Når man klikker på pilen til højre, kalder den funktionen <code class="language-js">ny()</code>, at sætte &lt;a&gt;&lt;/a&gt; rundt
+            om billedet, og bruge onclick.<br>
+            <code class="language-markup">&lt;a onclick="klikLyd.play();ny()"&gt;&lt;img src="Pil-højre.png" id="næste"&gt;&lt;/a&gt;</code><br>
+            ny() ændrer variablen som holder styr på spørgsmålsnummeret og kalder generertekst() som henter dataen.
+            <pre class="line-numbers"><code class="language-js">function genererTekst(x){
+    for (var i = 0; i &lt; data.length; i++) {
+        if (data[i]["LogoID"] == x) {
+            rigtigsvar=data[i]['rigtigtSvar']
+            svar1 = data[i]['1']; 
+            svar2 = data[i]['2'];
+            svar3 = data[i]['3'];
+            svar4 = data[i]['4'];
+            break;
+        }
+    }
+}</code></pre>
+            for-løkken løber igennem hele listen, og for hvert element, checker den 
+            om primærnøglen <b>LogoID</b> er lig spørgsmålsnummeret. Hvis det er det gemmer det dataen i variable, 
+            og så stopper den for-lykken. 
+            Knapperne har noget css-kode der ændrer farven ved hover:
+            <pre class="line-numbers"><code class="language-css">#Svar1 {
+    background-color: var(--svar1color)
+}
+#Svar1:hover {
+    background-color: var(--svar1hover)
+}</code></pre>
+            Her kan man se at der bliver brugt css variable. De variable ændrer sig så når man svarer.
+            <pre class="line-numbers"><code class="language-js">function checksvar(svar) {
+    if(svaret==false) {
+        svaret=true;
+        if(svar==rigtigsvar) {
+            rigtigLyd.play();
+            document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"color","#32e022")
+            document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"hover","#32e022")
+        }else{
+            forkertLyd.play();
+            document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"color","#ed2f2f")
+            document.getElementById('Svar'+svar).style.setProperty("--svar"+svar+"hover","#ed2f2f")
+            document.getElementById('Svar'+rigtigsvar).style.setProperty("--svar"+rigtigsvar+"color","#32e022")
+            document.getElementById('Svar'+rigtigsvar).style.setProperty("--svar"+rigtigsvar+"hover","#32e022")
+        }
+    }
+}</code></pre>
+            <b>svaret</b> er en variabel der ændrer sig, når man svarer, og den fortæller om man allerede 
+            har svaret i den runde. <b>svar</b> er det input som er i funktionen, og den fortæller hvilket nummer 
+            svar man har svaret, og <b>rigtigsvar</b> er variabelen med dataen om hvilket svar nummer er rigtigt. 
+            Hvis de er lig hinanden sætter den baggrundsfarven til grøn ved at ændre variablen <b>--svar</b><i>*svar*</i><b>color</b> 
+            og <b>--svar</b><i>*svar*</i><b>hover</b>. Ellers ændrer den farven til rød, og farven for den rigtige mulighed til grøn. 
+            Desuden bliver der også afspillet en lyd, afhængig af om man svarede rigtigt eller forkert.
         </div>
         <script src="prism/prism.js"></script>
     </body>

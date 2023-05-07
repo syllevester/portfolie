@@ -73,14 +73,18 @@
       background-color: var(--svar4hover)
     }
     .Overskrift{
+        
       font-family: "Copperplate";
-      font-size: 550%;
+      font-size: 6vw;
       text-shadow: 3px 4px #cfcfcf;
+      margin-top: 0px;
+        padding-top: 0px;
+        border-top: 0px;
     }
     #tilbage{
       transition: transform 0.5s;
       position: absolute;
-      left: 21%;
+      left: 15%;
       top: 25%;
       cursor:pointer;
     }
@@ -94,7 +98,7 @@
     #næste{
       transition: transform 0.5s;
       position: absolute;
-      right: 21%;
+      right: 15%;
       top: 25%;
       cursor: pointer;
     }
@@ -140,7 +144,7 @@
   var rigtigsvar=0;
   var svaret=false;
   resetfarver()
-
+    document.getElementsByClassName("Overskrift")[0].style.marginTop="0px";
   function ny() {
     svaret=false;
     var pic;
@@ -183,7 +187,7 @@
           svar2 = data[i]['2'];
           svar3 = data[i]['3'];
           svar4 = data[i]['4'];
-          break; // exit efter loop
+          break;
         }
       }
   }
