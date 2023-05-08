@@ -26,7 +26,9 @@
             og så bruger jeg denne kode til at loade siderne med: 
             <pre class="line-numbers"><code class="language-js">function loadunderside(url) {
     history.pushState("null","","#"+url.split('.')[0]);
-    $("#underside").fadeOut(fadehastighed, ()=>{$("#underside").load(url).fadeIn(fadehastighed);})
+    $("#underside").fadeOut(fadehastighed, ()=>{
+        $("#underside").load(url).fadeIn(fadehastighed);
+    });
 }</code></pre>
             $("#underside") vælger det element med id'et <b>"underside"</b> og fadeOut, fader det der er ud. 
             Efter det, udfører den den funktion som står som 2. input, som loader en html side ind i div'en, 
